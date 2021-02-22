@@ -1,3 +1,4 @@
+import { Datas } from '../classes/Datas.js';
 export class FormInput {
     constructor() {
         // 2 recover necessary informations
@@ -28,7 +29,23 @@ export class FormInput {
         // 8 if we have an array we logged values
         if (Array.isArray(inputs)) {
             const [type, firstName, lastName, address, country, town, zip, product, price, quantity, tva,] = inputs;
-            console.log(type, firstName, lastName, address, country, town, zip, product, price, quantity, tva);
+            // console.log(
+            // 	type,
+            // 	firstName,
+            // 	lastName,
+            // 	address,
+            // 	country,
+            // 	town,
+            // 	zip,
+            // 	product,
+            // 	price,
+            // 	quantity,
+            // 	tva,
+            // );
+            let docData;
+            let date = new Date();
+            docData = new Datas(...inputs, date);
+            console.log(docData.htmlFormat());
         }
     }
     // 6 create a private methode which returns a tuple with input on valid format

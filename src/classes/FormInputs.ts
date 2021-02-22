@@ -1,3 +1,5 @@
+import { Datas } from '../classes/Datas.js';
+import { HasHtmlFormat } from '../interfaces/HasHtmlFormat.js';
 export class FormInput {
 	// 1 defining object properties
 	form: HTMLFormElement;
@@ -55,19 +57,24 @@ export class FormInput {
 				quantity,
 				tva,
 			] = inputs;
-			console.log(
-				type,
-				firstName,
-				lastName,
-				address,
-				country,
-				town,
-				zip,
-				product,
-				price,
-				quantity,
-				tva,
-			);
+			// console.log(
+			// 	type,
+			// 	firstName,
+			// 	lastName,
+			// 	address,
+			// 	country,
+			// 	town,
+			// 	zip,
+			// 	product,
+			// 	price,
+			// 	quantity,
+			// 	tva,
+			// );
+			let docData: HasHtmlFormat;
+			let date: Date = new Date();
+
+			docData = new Datas(...inputs, date);
+			console.log(docData.htmlFormat());
 		}
 	}
 	// 6 create a private methode which returns a tuple with input on valid format
