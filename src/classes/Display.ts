@@ -1,5 +1,5 @@
-import { HasHtmlFormat } from '../interfaces/HasHtmlFormat';
-import { HasRender } from '../interfaces/HasRender';
+import { HasHtmlFormat } from '../interfaces/HasHtmlFormat.js';
+import { HasRender } from '../interfaces/HasRender.js';
 
 // import { HasRender } from '../interfaces/HasRender.js';
 

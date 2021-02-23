@@ -1,6 +1,4 @@
-import { HasHtmlFormat } from './HasHtmlFormat';
-
-// import { HasHtmlFormat } from './HasHtmlFormat.js';
+import { HasHtmlFormat } from './HasHtmlFormat.js';
 
 export interface HasRender {
 	render(docObj: HasHtmlFormat, docType: string): void;

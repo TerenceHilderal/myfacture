@@ -50,6 +50,7 @@ export class FormInput {
             docData = new Datas(...inputs, date);
             let template;
             template = new Display(this.docContainer, this.hiddenDiv);
+            console.log(template);
             template.render(docData, type);
         }
     }
