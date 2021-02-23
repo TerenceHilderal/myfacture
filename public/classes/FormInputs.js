@@ -1,4 +1,5 @@
 import { Datas } from '../classes/Datas.js';
+import { Display } from './Display.js';
 export class FormInput {
     constructor() {
         // 2 recover necessary informations
@@ -14,6 +15,8 @@ export class FormInput {
         this.price = document.getElementById('price');
         this.quantity = document.getElementById('quantity');
         this.tva = document.getElementById('tva');
+        this.docContainer = document.getElementById('document-container');
+        this.hiddenDiv = document.getElementById('hiddenDiv');
         // 3 Invocking Listener once all datas as been recover by the constructor
         this.submitFormListener();
     }
@@ -45,7 +48,9 @@ export class FormInput {
             let docData;
             let date = new Date();
             docData = new Datas(...inputs, date);
-            console.log(docData.htmlFormat());
+            let template;
+            template = new Display(this.docContainer, this.hiddenDiv);
+            template.render(docData, type);
         }
     }
     // 6 create a private methode which returns a tuple with input on valid format

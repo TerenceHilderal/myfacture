@@ -1,5 +1,7 @@
 import { Datas } from '../classes/Datas.js';
 import { HasHtmlFormat } from '../interfaces/HasHtmlFormat.js';
+import { HasRender } from '../interfaces/HasRender.js';
+import { Display } from './Display.js';
 export class FormInput {
 	// 1 defining object properties
 	form: HTMLFormElement;
@@ -14,6 +16,8 @@ export class FormInput {
 	price: HTMLInputElement;
 	quantity: HTMLInputElement;
 	tva: HTMLInputElement;
+	docContainer: HTMLDivElement;
+	hiddenDiv: HTMLDivElement;
 
 	constructor() {
 		// 2 recover necessary informations
@@ -29,6 +33,11 @@ export class FormInput {
 		this.price = document.getElementById('price') as HTMLInputElement;
 		this.quantity = document.getElementById('quantity') as HTMLInputElement;
 		this.tva = document.getElementById('tva') as HTMLInputElement;
+
+		this.docContainer = document.getElementById(
+			'document-container',
+		) as HTMLDivElement;
+		this.hiddenDiv = document.getElementById('hiddenDiv') as HTMLDivElement;
 
 		// 3 Invocking Listener once all datas as been recover by the constructor
 		this.submitFormListener();
@@ -74,7 +83,9 @@ export class FormInput {
 			let date: Date = new Date();
 
 			docData = new Datas(...inputs, date);
-			console.log(docData.htmlFormat());
+			let template: HasRender;
+			template = new Display(this.docContainer, this.hiddenDiv);
+			template.render(docData, type);
 		}
 	}
 	// 6 create a private methode which returns a tuple with input on valid format
