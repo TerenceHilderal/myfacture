@@ -19,9 +19,11 @@ export class FormInput {
         this.docContainer = document.getElementById('document-container');
         this.hiddenDiv = document.getElementById('hiddenDiv');
         this.btnPrint = document.getElementById('print');
+        this.btnReload = document.getElementById('reload');
         // 3 Invocking Listener once all datas as been recover by the constructor
         this.submitFormListener();
         this.printListener(this.btnPrint, this.docContainer);
+        this.deleteListener(this.btnReload);
     }
     //4 Defining submitFormListener Method
     submitFormListener() {
@@ -32,6 +34,12 @@ export class FormInput {
             let availableDoc;
             availableDoc = new Print(docContainer);
             availableDoc.print();
+        });
+    }
+    deleteListener(btn) {
+        btn.addEventListener('click', () => {
+            document.location.reload();
+            window.scrollTo(0, 0);
         });
     }
     // 5 defining handleFormSubmit Method
