@@ -1,7 +1,9 @@
 import { Datas } from '../classes/Datas.js';
 import { HasHtmlFormat } from '../interfaces/HasHtmlFormat.js';
+import { HasPrint } from '../interfaces/HasPrint.js';
 import { HasRender } from '../interfaces/HasRender.js';
 import { Display } from './Display.js';
+import { Print } from './Print.js';
 export class FormInput {
 	// 1 defining object properties
 	form: HTMLFormElement;
@@ -43,10 +45,19 @@ export class FormInput {
 
 		// 3 Invocking Listener once all datas as been recover by the constructor
 		this.submitFormListener();
+		this.printListener(this.btnPrint, this.docContainer);
 	}
 	//4 Defining submitFormListener Method
 	private submitFormListener(): void {
 		this.form.addEventListener('submit', this.handleFormSubmit.bind(this));
+	}
+
+	private printListener(btn: HTMLButtonElement, docContainer: HTMLDivElement) {
+		btn.addEventListener('click', () => {
+			let availableDoc: HasPrint;
+			availableDoc = new Print(docContainer);
+			availableDoc.print();
+		});
 	}
 	// 5 defining handleFormSubmit Method
 	private handleFormSubmit(e: Event) {

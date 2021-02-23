@@ -1,5 +1,6 @@
 import { Datas } from '../classes/Datas.js';
 import { Display } from './Display.js';
+import { Print } from './Print.js';
 export class FormInput {
     constructor() {
         // 2 recover necessary informations
@@ -20,10 +21,18 @@ export class FormInput {
         this.btnPrint = document.getElementById('print');
         // 3 Invocking Listener once all datas as been recover by the constructor
         this.submitFormListener();
+        this.printListener(this.btnPrint, this.docContainer);
     }
     //4 Defining submitFormListener Method
     submitFormListener() {
         this.form.addEventListener('submit', this.handleFormSubmit.bind(this));
+    }
+    printListener(btn, docContainer) {
+        btn.addEventListener('click', () => {
+            let availableDoc;
+            availableDoc = new Print(docContainer);
+            availableDoc.print();
+        });
     }
     // 5 defining handleFormSubmit Method
     handleFormSubmit(e) {
