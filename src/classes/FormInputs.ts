@@ -18,6 +18,7 @@ export class FormInput {
 	tva: HTMLInputElement;
 	docContainer: HTMLDivElement;
 	hiddenDiv: HTMLDivElement;
+	btnPrint: HTMLButtonElement;
 
 	constructor() {
 		// 2 recover necessary informations
@@ -38,6 +39,7 @@ export class FormInput {
 			'document-container',
 		) as HTMLDivElement;
 		this.hiddenDiv = document.getElementById('hiddenDiv') as HTMLDivElement;
+		this.btnPrint = document.getElementById('print') as HTMLButtonElement;
 
 		// 3 Invocking Listener once all datas as been recover by the constructor
 		this.submitFormListener();
@@ -84,8 +86,7 @@ export class FormInput {
 
 			docData = new Datas(...inputs, date);
 			let template: HasRender;
-			template = new Display(this.docContainer, this.hiddenDiv);
-			console.log(template);
+			template = new Display(this.docContainer, this.hiddenDiv, this.btnPrint);
 			template.render(docData, type);
 		}
 	}
