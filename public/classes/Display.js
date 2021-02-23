@@ -1,3 +1,4 @@
+import { Storage } from './Storage.js';
 // import { HasRender } from '../interfaces/HasRender.js';
 export class Display {
     constructor(container, hiddenDiv, btnPrint) {
@@ -9,6 +10,7 @@ export class Display {
     render(docObj, docType) {
         const htmlString = docObj.htmlFormat();
         this.container.innerHTML = htmlString;
+        new Storage(docType, htmlString);
         if (docType === 'invoice') {
             this.btnPrint.innerText = 'Print invoice';
         }
